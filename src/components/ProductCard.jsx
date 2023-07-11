@@ -1,27 +1,28 @@
 import React from "react";
 import "./../styles/ProductCard.css"
+import { NavLink } from "react-router-dom";
 
-function ProductCard({name, outofstock, productName, productType, price, sale, oldPrice}){
+function ProductCard({productId, productName, outofstock, productType, price, sale, oldPrice}){
     return (
-        <a className="product-item">
+        <div className="product-item">
             <div className="product-item_img">
                 {outofstock && <div className="out-of-stock">Out Of Stock</div>}
-                {sale && <div className="sale">SALE!</div>}
-                <a href="#">
-                    <img src={`src/assets/${productName}.jpg`} alt="" />
-                </a>
+                {oldPrice>0 && <div className="sale">SALE!</div>}
+                <NavLink href="#">
+                    <img src={`src/assets/product${productId}.jpg`} alt="" />
+                </NavLink>
                 <div className="add-item-somewhere">
-                    <a href="#" className="add-to-cart">Add to Cart</a>
+                    <NavLink href="#" className="add-to-cart">Add to Cart</NavLink>
                     {/* <a href="#" className="add-to-favourite"><img src="dist/images/favourite.svg" alt=""/></a> */}
                 </div>
             </div>
             <div className="product-item-little-desc">
-                <div><a href="#" className="product-item-little-desc_categories-name">{productType}</a></div>
-                <div><a href="#" className="product-item-little-desc_product-name">{name}</a></div>
-                {sale && <del className="product-item-little-desc_old-product-price">${oldPrice}</del>}
+                <div><NavLink href="#" className="product-item-little-desc_categories-name">{productType}</NavLink></div>
+                <div><NavLink className="product-item-little-desc_product-name">{productName}</NavLink></div>
+                {oldPrice>0 && <del className="product-item-little-desc_old-product-price">${oldPrice}</del>}
                 <span className="product-item-little-desc_product-price">${price}</span>
             </div>
-        </a>
+        </div>
     )
 }
 
