@@ -1,0 +1,74 @@
+.hero-banner-container {
+    overflow: hidden;
+    position: relative;
+  }
+.hero-banner {
+    margin-top: 65px;
+    background: url("src/assets/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100%;
+    height: 100%;
+    width: 100%;
+  }
+.hero-banner .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+.hero-banner-left-side {
+    padding: 120px 0;
+  }
+.hero-banner-left-side_content h1 {
+    line-height: 1.1304347826em;
+    font-size: 46px;
+    margin-bottom: 20px;
+    color: #a4816a;
+  }
+.hero-banner-left-side_content p {
+    line-height: 1.2em;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+.hero-banner-left-side_content-btns a {
+    margin-top: 20px;
+  }
+.hero-banner-left-side_content-btns a:first-child {
+    float: left;
+    width: 120px;
+    padding: 16px 0;
+    color: white;
+    background-color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    margin-right: 20px;
+  }
+.hero-banner-left-side_content-btns a:first-child:hover {
+    color: #333;
+    background: white;
+    transform: scale(1.03);
+  }
+.hero-banner-left-side_content-btns a:first-child:active {
+    transform: scale(0.97);
+  }
+.hero-banner-left-side_content-btns a:last-child {
+    float: left;
+    width: 120px;
+    padding: 16px 0;
+    color: white;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    color: #a4816a;
+  }
+.hero-banner-left-side_content-btns a:last-child:hover {
+    color: white;
+    background: #a4816a;
+    transform: scale(1.03);
+  }
+.hero-banner-left-side_content-btns a:last-child:active {
+    transform: scale(0.97);
+  }
