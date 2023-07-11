@@ -1,0 +1,80 @@
+.category-content {
+    display: flex;
+    justify-content: space-between;
+  }
+.category-content .big-category {
+    padding-bottom: 340px;
+  }
+.category-content .category-description {
+    padding: 50px 30px 70px 0px;
+    display: flex;
+    justify-content: flex-end;
+  }
+.category-content .category-description_content {
+    text-align: right;
+  }
+.category-content .category-description_content h2 {
+    line-height: 1.1428571429em;
+    font-size: 42px;
+    color: #a4816a;
+  }
+.category-content .category-description_content span {
+    line-height: 1.5em;
+    font-size: 16px;
+    color: rgba(41, 41, 41, 0.8);
+  }
+.category-content .category-description_content a {
+    margin-top: 30px;
+    float: left;
+    width: 140px;
+    padding: 16px 0;
+    color: white;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    float: right;
+    color: rgb(41, 41, 41);
+  }
+.category-content .category-description_content a:hover {
+    color: #fff;
+    background: #000;
+    transform: scale(1.03);
+  }
+.category-content .category-description_content a:active {
+    transform: scale(0.97);
+  }
+.category-content-left-side {
+    width: 50%;
+    margin-right: 16px;
+  }
+.category-content-left-side-fashion {
+    background: url("../assets/woman-category.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 40px;
+  }
+.category-content-left-side-best-sale {
+    background: url("../assets/man-category.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+.category-content-right-side {
+    width: 50%;
+    margin-left: 16px;
+  }
+.category-content-right-side-accessories {
+    background: url("../assets/man-category.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 40px;
+  }
+.category-content-right-side-others {
+    background: url("../assets/best-sale-category.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
