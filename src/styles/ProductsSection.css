@@ -1,0 +1,24 @@
+.products-section {
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
+  .products-section_title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .products-section_title h3 {
+    line-height: 1.3333333333em;
+    font-size: 36px;
+    color: #252324;
+  }
+  .products-section_title p {
+    line-height: 1.3333333333em;
+    font-size: 18px;
+    color: #9d9d9d;
+  }
+  .products-section .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 50px;
+  }
