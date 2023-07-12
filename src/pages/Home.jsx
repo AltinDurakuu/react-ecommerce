@@ -3,7 +3,7 @@ import HeroBanner from "../components/HeroBanner";
 import DiscoverSection from "../components/DiscoverSection";
 import ProductsSection from "../components/ProductsSection";
 import axios from 'axios';
-import ProductCard from '../components/ProductCard';
+import SubscribeSection from '../components/SubscribeSection';
 
 function Home(){
     const [mostSold, setMostSold] = useState([]);
@@ -39,7 +39,7 @@ function Home(){
   
       fetchData();
     }, []);
-    console.log("eee", recentProducts)
+
     return (
         <main className="full-block">
             <HeroBanner />
@@ -47,6 +47,7 @@ function Home(){
             <ProductsSection sectionTitle="Special offers" sectionPhrase="Exclusive Deals and Discounts" arrayOfProducts={onSale}/>
             <ProductsSection sectionTitle="Popular items" sectionPhrase="Trending products flying off the shelves" arrayOfProducts={mostSold}/>
             <ProductsSection sectionTitle="Recent releases" sectionPhrase="The most recent additions to our collection" arrayOfProducts={recentProducts}/>
+            <SubscribeSection />
         </main>
     )
 }
