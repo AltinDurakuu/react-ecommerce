@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import HeroBanner from "../components/HeroBanner";
 import DiscoverSection from "../components/DiscoverSection";
 import ProductsSection from "../components/ProductsSection";
-import axios from 'axios';
 import SubscribeSection from '../components/SubscribeSection';
 
 function Home(){

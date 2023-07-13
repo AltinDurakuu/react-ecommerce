@@ -1,0 +1,59 @@
+.clothes-accessories{
+    margin-top: 60px;
+}
+.clothes-accessories-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 5px; /* Add border radius for a rounded appearance */
+  }
+  
+  .clothes-accessories-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .clothes-accessories-group {
+    margin-right: 60px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    margin-right: 10px;
+    font-weight: bold; /* Make the labels bold for better readability */
+  }
+  
+  .btn--form {
+    background-color: #2b55dd;
+    color: #fdf2e9;
+    padding: 8px 16px; /* Increase padding for a larger button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn--form:hover {
+    background-color: #152f47;
+    color: #ccc;
+  }
+  
+  /* Adjust input and range styles */
+  input[type=text],
+  input[type=range] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+  
+  /* Adjust checkbox styles */
+  input[type=checkbox] {
+    margin-right: 5px; /* Add spacing between checkboxes and labels */
+  }
