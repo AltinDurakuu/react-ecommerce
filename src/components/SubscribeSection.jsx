@@ -16,13 +16,12 @@ function SubscribeSection() {
     axios
       .post("http://localhost/Api/insert_email.php", formData)
       .then((response) => {
-        console.log(response.data);
-        // Handle successful response
+        alert(response.data)
       })
       .catch((error) => {
         console.error(error);
-        // Handle error
       });
+      setEmail("");
   }
 
   return (
