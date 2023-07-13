@@ -52,7 +52,7 @@ switch ($sort) {
         $sql .= " ORDER BY date_added DESC";
         break;
     case 'sale_percentage':
-        $sql .= " AND old_price IS NOT NULL ORDER BY (1 - (price / old_price)) DESC";
+        $sql .= " AND old_price > price AND old_price IS NOT NULL ORDER BY (1 - (price / old_price)) DESC";
         break;
     default:
         // No sorting option specified, use default sorting

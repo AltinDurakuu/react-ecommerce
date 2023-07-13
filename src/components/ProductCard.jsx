@@ -17,7 +17,7 @@ function ProductCard({productId, productName, outofstock, productType, price, sa
                 </div>
             </div>
             <div className="product-item-little-desc">
-                <div><NavLink href="#" className="product-item-little-desc_categories-name">{productType}</NavLink></div>
+                <div><NavLink className="product-item-little-desc_categories-name">{productType}</NavLink></div>
                 <div><NavLink className="product-item-little-desc_product-name">{productName}</NavLink></div>
                 {oldPrice>0 && <del className="product-item-little-desc_old-product-price">${oldPrice}</del>}
                 <span className="product-item-little-desc_product-price">${price}</span>
