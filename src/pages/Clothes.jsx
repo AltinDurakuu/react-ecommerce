@@ -3,7 +3,7 @@ import ClothesAccessoriesPage from "../components/ClothesAccessoriesPage";
 
 function Clothes(){
     return (
-        <main>
+        <main className="full-block">
             <ClothesAccessoriesPage type="clothes"/>
         </main>
     )
