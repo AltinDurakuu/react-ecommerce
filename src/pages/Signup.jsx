@@ -1,10 +1,11 @@
 import React from "react";
+import SignupForm from "../components/SignupForm";
 
 function Signup(){
     return (
-        <>
-        Signup
-        </>
+        <main className="full-block">
+            <SignupForm />
+        </main>
     )
 }
 

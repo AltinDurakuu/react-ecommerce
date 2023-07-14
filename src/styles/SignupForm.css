@@ -1,0 +1,86 @@
+.signup {
+    padding-bottom: 100px;
+    background-color: #f3f3f3;
+  }
+  .signup .signup-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    width: 50%;
+    padding: 80px 0;
+    border-radius: 60px;
+    background-color: #a4816a;
+  }
+  .signup .signup-content .signup-title {
+    padding: 15px;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .signup .signup-content .signup-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+  .signup .signup-content .signup-form > div {
+    display: flex;
+  }
+  .signup .signup-content .signup-form > div > div {
+    margin-right: 10px;
+    width: 50%;
+  }
+  .signup .signup-content .signup-form > div .signup_terms {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .signup .signup-content .signup-form > div .signup_terms input {
+    width: 20px;
+    height: 20px;
+  }
+  .signup .signup-content .signup-form label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .signup .signup-content .signup-form input {
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 9px;
+    border: none;
+  }
+  .signup .signup-content .signup-form input:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(253, 242, 233, 0.5);
+  }
+  .signup .signup-content .signup-form a {
+    text-decoration: underline;
+    color: #000;
+  }
+  .signup .signup-content .btn--form {
+    background-color: #f48982;
+    color: #fdf2e9;
+    align-self: end;
+    padding: 8px;
+  }
+  .signup .signup-content .btn,
+  .signup .signup-content .btn:link,
+  .signup .signup-content .btn:visited {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .signup .signup-content button {
+    outline: 1px solid #f48982;
+  }
+  .signup .signup-content .btn--form:hover {
+    background-color: #fdf2e9;
+    color: #f48982;
+  }
