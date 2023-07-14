@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./../styles/SignupForm.css";
 import axios from "axios";
 
@@ -14,6 +14,45 @@ function SignupForm() {
     terms: false,
   });
   const [errors, setErrors] = useState([]);
+  const [message, setMessage] = useState("");
+
+  function validation(){  
+    let errors = [];
+    if (!formData.terms) {
+      errors.push("You have to agree with terms and conditions");
+    }
+  
+    if (!/^[a-zA-Z\s]+$/.test(formData.name)) {
+      errors.push("Invalid name. Please enter a name without special characters.");
+    }
+  
+    if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(formData.username)) {
+      errors.push("Invalid username. It must start with a letter and can contain only letters and numbers.");
+    }
+  
+    if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(formData.email) || formData.email.length > 70) {
+      errors.push("Invalid email. Email should be a valid address and cannot exceed 70 characters.");
+    }
+  
+    if (!/^\d{1,70}$/.test(formData.phone) || formData.phone.length > 70) {
+      errors.push("Invalid phone number. Phone number should only contain digits and cannot exceed 70 characters.");
+    }
+  
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/.test(formData.password)) {
+      errors.push("Invalid password. Password should contain at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character.");
+    }
+  
+    if (formData.password !== formData.password2) {
+      errors.push("Passwords do not match.");
+    }
+  
+    if (formData.address.length > 128) {
+      errors.push("Address exceeds the maximum length of 128 characters.");
+    }
+  
+    return errors;
+}
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
@@ -26,40 +65,37 @@ function SignupForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Validate form inputs
-    const errors = [];
-    const data = new FormData();
-    data.append('name', formData.name);
-    data.append('username', formData.username);
-    data.append('email', formData.email);
-    data.append('phone', formData.phone);
-    data.append('password', formData.password);
-    data.append('password2', formData.password2);
-    data.append('address', formData.password);
-    data.append('terms', formData.message);
-    // Perform additional client-side validations if needed
-
-    if (errors.length > 0) {
-      setErrors(errors);
+  
+    const validationErrors = validation();
+  
+    setErrors(validationErrors); 
+  
+    if (validationErrors.length > 0) {
+      alert(validationErrors);
       return;
     }
-
-    // Send the form data to the PHP backend using Axios
+  
+    const data = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      data.append(key, value);
+    });
+  
     axios
       .post("http://localhost/Api/signup.php", data)
       .then((response) => {
-        const data = response.data;
-        if (data.success) {
-          console.log("User registration successful");
-        } else {
-          setErrors(data.errors || [data.message]);
-        }
+        const responseData = response.data;
+        setMessage(responseData);
       })
       .catch((error) => {
-        // Handle any network or server errors
         console.error("Error submitting the form:", error);
       });
   };
+
+  useEffect(() => {
+    if (message !== "") {
+      alert(message);
+    }
+  }, [message]);
 
 
   return (
