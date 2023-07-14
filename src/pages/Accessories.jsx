@@ -1,10 +1,11 @@
 import React from "react";
+import ClothesAccessoriesPage from "../components/ClothesAccessoriesPage";
 
 function Accessories(){
     return (
-        <>
-        Accessories
-        </>
+        <main>
+            <ClothesAccessoriesPage type="accessories"/>
+        </main>
     )
 }
 
