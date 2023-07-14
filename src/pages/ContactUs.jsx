@@ -39,28 +39,30 @@ function ContactUs(){
           });
       }
     return (
-        <section className="contact-section">
-            <div className="container">
-                <h1>Contact Us</h1>
-                <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="name">Name:</label>
-                        <input type="text" value={formData.name} onChange={handleChange} id="name" name="name" required />
-                    </div>
-        
-                    <div className="form-group">
-                        <label htmlFor="email">Email:</label>
-                        <input type="email" value={formData.email} onChange={handleChange} id="email" name="email" required />
-                    </div>
-        
-                    <div className="form-group">
-                        <label htmlFor="message">Message:</label>
-                        <textarea id="message" value={formData.message} onChange={handleChange} name="message" required></textarea>
-                    </div>        
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-        </section>
+        <main className="full-block">
+            <section className="contact-section">
+                <div className="container">
+                    <h1>Contact Us</h1>
+                    <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="name">Name:</label>
+                            <input type="text" value={formData.name} onChange={handleChange} id="name" name="name" required />
+                        </div>
+            
+                        <div className="form-group">
+                            <label htmlFor="email">Email:</label>
+                            <input type="email" value={formData.email} onChange={handleChange} id="email" name="email" required />
+                        </div>
+            
+                        <div className="form-group">
+                            <label htmlFor="message">Message:</label>
+                            <textarea id="message" value={formData.message} onChange={handleChange} name="message" required></textarea>
+                        </div>        
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </section>
+        </main>
     )
 }
 
