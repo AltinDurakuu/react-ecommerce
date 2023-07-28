@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./../styles/SignupForm.css";
 import axios from "axios";
+import { Link, useNavigate  } from "react-router-dom";
 
 function SignupForm() {
   const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ function SignupForm() {
   });
   const [errors, setErrors] = useState([]);
   const [message, setMessage] = useState("");
+
+  const navigate  = useNavigate();
 
   function validation(){  
     let errors = [];
@@ -85,6 +88,9 @@ function SignupForm() {
       .then((response) => {
         const responseData = response.data;
         setMessage(responseData);
+        if (responseData === "Signed up Successfully") {
+          navigate("/login"); // Assuming you have a route set up for the login page
+        }
       })
       .catch((error) => {
         console.error("Error submitting the form:", error);
@@ -211,7 +217,7 @@ function SignupForm() {
           </div>
           <div>
             <p>
-              You already have an account? <a href="login.html">Log In here</a>
+              You already have an account? <Link to={"./../login"}>Log in</Link>
             </p>
           </div>
           <button className="btn btn--form" type="submit" value="Signup">

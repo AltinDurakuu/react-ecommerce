@@ -1,10 +1,11 @@
 import React from "react";
+import LoginForm from "../components/LoginForm";
 
 function Login(){
     return (
-        <>
-        Login
-        </>
+       <main className="full-block">
+            <LoginForm />
+       </main>
     )
 }
 

@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import { NavLink } from 'react-router-dom';
 import "../styles/base.css"
-import "../styles/Navbar.css"
+import "../styles/Navbar.css";
+import { AppContext } from "./AppContext";
 
 
 function Navbar(){
+    const { isUserLogged, setIsUserLogged } = useContext(AppContext);
+    function logOut(){
+        setIsUserLogged(false);
+        console.log(isUserLogged)
+    }
     return (
         <header className="full-block">
             <div className="header-navigation-container" id="scroll-container">
@@ -17,22 +23,25 @@ function Navbar(){
                             <nav>
                             <ul>
                                 <li>
-                                    <NavLink to="/">Home</NavLink>                        
+                                    <NavLink className="page" to="/">Home</NavLink>                        
                                 </li>
                                 <li>
-                                    <NavLink to="/clothes">Clothes</NavLink>                        
+                                    <NavLink className="page"  to="/clothes">Clothes</NavLink>                        
                                 </li>
                                 <li>
-                                    <NavLink to="/accessories">Accessories</NavLink>                        
+                                    <NavLink className="page"  to="/accessories">Accessories</NavLink>                        
                                 </li>
                                 <li>
-                                    <NavLink to="/contactUs">Contact Us</NavLink>                        
+                                    <NavLink className="page"  to="/contactUs">Contact Us</NavLink>                        
                                 </li>
                                 <li>
-                                    <NavLink to="/login">Log In</NavLink>                        
+                                    {!isUserLogged && <NavLink className="page"  to="/login">Log In</NavLink>   }                     
                                 </li>
                                 <li>
-                                    <NavLink to="/signup">Sign Up</NavLink>                        
+                                    {!isUserLogged && <NavLink className="page"  to="/signup">Sign Up</NavLink>  }                      
+                                </li>
+                                <li>
+                                    {isUserLogged && <NavLink onClick={logOut} to="/"  className="custom-active-class">Log Out</NavLink>  }                      
                                 </li>
                                 <li>
                                     <NavLink to="/cart">
