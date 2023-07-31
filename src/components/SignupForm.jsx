@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./../styles/SignupForm.css";
 import axios from "axios";
 import { Link, useNavigate  } from "react-router-dom";
+import { AppContext } from "./AppContext";
+
 
 function SignupForm() {
   const [formData, setFormData] = useState({
@@ -18,6 +20,13 @@ function SignupForm() {
   const [message, setMessage] = useState("");
 
   const navigate  = useNavigate();
+  const { isUserLogged, setIsUserLogged } = useContext(AppContext);
+
+  useEffect(() => {
+    if (isUserLogged) {
+      navigate("/");
+    }
+  }, [isUserLogged, navigate]);
 
   function validation(){  
     let errors = [];

@@ -6,10 +6,13 @@ import { AppContext } from "./AppContext";
 
 
 function Navbar(){
-    const { isUserLogged, setIsUserLogged } = useContext(AppContext);
+    const { isUserLogged, setIsUserLogged, handleLogout } = useContext(
+        AppContext
+      );
     function logOut(){
-        setIsUserLogged(false);
-        console.log(isUserLogged)
+        localStorage.setItem("isUserLogged", false)
+        localStorage.setItem("user", null);
+        handleLogout();
     }
     return (
         <header className="full-block">
@@ -34,15 +37,18 @@ function Navbar(){
                                 <li>
                                     <NavLink className="page"  to="/contactUs">Contact Us</NavLink>                        
                                 </li>
-                                <li>
-                                    {!isUserLogged && <NavLink className="page"  to="/login">Log In</NavLink>   }                     
-                                </li>
-                                <li>
-                                    {!isUserLogged && <NavLink className="page"  to="/signup">Sign Up</NavLink>  }                      
-                                </li>
-                                <li>
-                                    {isUserLogged && <NavLink onClick={logOut} to="/"  className="custom-active-class">Log Out</NavLink>  }                      
-                                </li>
+                                {!isUserLogged && <li>
+                                   <NavLink className="page"  to="/login">Log In</NavLink>                 
+                                </li>}
+                                {!isUserLogged && <li>
+                                     <NavLink className="page"  to="/signup">Sign Up</NavLink>                   
+                                </li>}
+                                {isUserLogged && <li>
+                                   <NavLink to="/" onClick={logOut}  className="custom-active-class">Log Out</NavLink>                     
+                                </li>}
+                                {isUserLogged && <li>
+                                   <span className="navlinkName">Hello {JSON.parse(localStorage.getItem("user")).username}</span>                     
+                                </li>}
                                 <li>
                                     <NavLink to="/cart">
                                         <img src="src/assets/shopping-cart.svg" width="30px" alt=""/>

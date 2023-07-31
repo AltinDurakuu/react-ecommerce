@@ -55,7 +55,6 @@ function ClothesAccessoriesPage({type}) {
       setProducts([]);
     }
   };
-  console.log(products)
   let productsToRender = products.map(product => {
     return (<ProductCard
               key={product.idproduct}

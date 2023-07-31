@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/LoginForm.css"
 import axios from "axios";
@@ -9,9 +9,19 @@ function LoginForm(){
         login_username_email: "",
         login_password: ""
       });
-    const { isUserLogged, setIsUserLogged } = useContext(AppContext);
+    const { isUserLogged, setIsUserLogged, handleLoginToken } = useContext(
+      AppContext
+    );
+
+
     const navigate  = useNavigate();
     
+    useEffect(() => {
+      if (isUserLogged) {
+        navigate("/");
+      }
+    }, [isUserLogged, navigate]);
+
     const handleChange = (e) => {
         const { name, value} = e.target;
     
@@ -30,16 +40,17 @@ function LoginForm(){
         });
       
         axios
-          .post("http://localhost/Api/login.php", data)
+          .post("http://localhost/Api/login2.php", data)
           .then((response) => {
-            console.log(response);
             const loggedIn = JSON.parse(response.data.loggedin);
             setIsUserLogged(loggedIn);
-            localStorage.setItem("isUserLogged", loggedIn); // Save the updated state value
+            localStorage.setItem("isUserLogged", loggedIn);
             if (loggedIn) {
-              localStorage.setItem("user", JSON.stringify(response.data.userInfo));
+              handleLoginToken(response.data.token);
+              localStorage.setItem("user", JSON.stringify(response.data.user));
               navigate("/");
             }
+            console.log(response)
           })
           .catch((error) => {
             console.error("Error submitting the form:", error);

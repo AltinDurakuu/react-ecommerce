@@ -15,7 +15,6 @@ function ContactUs(){
           [name]: value,
         }));
       };
-      console.log(formData)
       function handleSubmit(event) {
         event.preventDefault();
       

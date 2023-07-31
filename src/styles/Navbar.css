@@ -65,11 +65,6 @@ header .navigation-right-side nav ul a:hover:after{
 .navigation-right-side nav ul li{
     margin-left: 20px;
 }
-/* .custom-active-class.active{
-    color: #000 !important;
+.navlinkName{
+    font-size: 14px;
 }
-.custom-active-class.active::after{
-    content: "";
-    height: 0;
-    width: 0;
-} */
