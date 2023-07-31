@@ -1,0 +1,49 @@
+.image-slider {
+    position: relative;
+  }
+  
+  .products-photos-grid {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    max-width: 500px; /* Set the desired width for the slider container */
+  }
+  
+  .products-photos-grid img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+    display: none;
+  }
+  
+  .products-photos-grid img.active {
+    transform: translateX(0%);
+    display: block;
+  }
+  
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px;
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    z-index: 1;
+    transition: opacity 0.2s ease;
+  }
+  
+  .arrow:hover {
+    opacity: 0.7;
+  }
+  
+  .prev {
+    left: 0;
+  }
+  
+  .next {
+    right: 0;
+  }
+  
