@@ -29,20 +29,32 @@
   .product-item_img .add-item-somewhere {
     display: none;
     position: absolute;
+    padding: 5px;
     bottom: 10px;
     width: 80%;
     left: 10%;
     background-color: #fff;
-    grid-template-columns: 2.5fr 1fr;
+    grid-template-columns: 2fr 1fr;
     text-align: center;
     line-height: 40px;
   }
   .product-item_img .add-item-somewhere .add-to-cart {
     border-right: 1px solid #f3f3f3;
+    font-size: 14px;
+    padding-top: 10px;
   }
-  .product-item_img .add-item-somewhere .add-to-favourite {
-    position: relative;
-    top: 4px;
+  .quantity-controls{
+    display: flex;
+   }
+  .quantity-controls span{
+    margin: 0 10px;
+  }
+  .quantity-controls button{
+    background-color: transparent;
+    border: 1px solid #333;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px;
   }
   .product-item-little-desc {
     margin-top: 15px;

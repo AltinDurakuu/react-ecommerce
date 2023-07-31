@@ -5,6 +5,7 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [isUserLogged, setIsUserLogged] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
 
   // const isTokenValid = (serverToken) => {
   //   return token === serverToken;
@@ -29,6 +30,8 @@ const AppProvider = ({ children }) => {
         token,
         handleLogout,
         handleLoginToken,
+        cartItems,
+        setCartItems
       }}
     >
       {children}
