@@ -30,7 +30,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: #fff;
+    color: #000;
     z-index: 1;
     transition: opacity 0.2s ease;
   }

@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import "./../styles/ProductsSection.css";
-import axios from "axios";
+import axios from "./axios";
 
 function ProductsSection({ sectionTitle, sectionPhrase, filter }) {
   const [products, setProducts] = useState([]);
-
+  let saleSection = false;
+  if(filter == "sale_percentage"){
+    saleSection = true;
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost/Api/api.php", {
+        const response = await axios.get("/api.php", {
           params: {
             sort: filter,
             limit: 8,
@@ -39,7 +42,7 @@ function ProductsSection({ sectionTitle, sectionPhrase, filter }) {
   ));
 
   return (
-    <section className="products-section products-featured full-block">
+    <section className="products-section products-featured full-block" id={saleSection ? "on-sale" : undefined}>
       <div className="container">
         <div className="products-section_title">
           <h3>{sectionTitle}</h3>

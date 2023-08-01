@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/LoginForm.css"
-import axios from "axios";
+import axios from "./axios";
 import { AppContext } from "./AppContext";
 
 function LoginForm(){
@@ -50,7 +50,6 @@ function LoginForm(){
               localStorage.setItem("user", JSON.stringify(response.data.user));
               navigate("/");
             }
-            console.log(response)
           })
           .catch((error) => {
             console.error("Error submitting the form:", error);

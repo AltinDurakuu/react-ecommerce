@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GetProductsForm from "./GetProductsForm";
-import axios from "axios";
+import axios from "./axios";
 import ProductCard from "./ProductCard";
 
 function ClothesAccessoriesPage({type}) {
@@ -23,7 +23,7 @@ function ClothesAccessoriesPage({type}) {
     event.preventDefault();
 
     try {
-      const response = await axios.get("http://localhost/Api/api.php", {
+      const response = await axios.get("/api.php", {
         params: {
           type: type,
           category: formValues.category,
@@ -44,7 +44,7 @@ function ClothesAccessoriesPage({type}) {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost/Api/api.php", {
+      const response = await axios.get("/api.php", {
         params: {
           type: type
         },

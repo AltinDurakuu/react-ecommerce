@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./../styles/SignupForm.css";
-import axios from "axios";
+import axios from "./axios";
 import { Link, useNavigate  } from "react-router-dom";
 import { AppContext } from "./AppContext";
 
@@ -93,7 +93,7 @@ function SignupForm() {
     });
   
     axios
-      .post("http://localhost/Api/signup.php", data)
+      .post("signup.php", data)
       .then((response) => {
         const responseData = response.data;
         setMessage(responseData);

@@ -1,3 +1,6 @@
+.product-item{
+  cursor: pointer;
+}
 .product-item:hover .add-item-somewhere {
     display: grid;
   }

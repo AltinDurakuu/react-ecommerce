@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from "react";
-import axios from "axios";
+import axios from "./../components/axios";
 import { useParams } from "react-router-dom";
 import "./../styles/ProductPage.css"
 import ImageSlider from "../components/ImagesSlider";
@@ -12,17 +12,15 @@ function ProductPage() {
   const { cartItems, setCartItems } = useContext(AppContext);
   const productInCart = cartItems.find((item) => item.productId === productId);
   const quantityInCart = productInCart ? productInCart.quantity : 0;
-
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost/Api/api.php", {
+      const response = await axios.get("/api.php", {
         params: {
           productId: productId,
           limit:1
         },
       });
       setProduct(response.data[0]);
-      console.log(response.data)
     } catch (error) {
       console.error(error);
     }
@@ -61,8 +59,11 @@ function ProductPage() {
   }, []);
   useEffect(() => {
     if (product.idproduct) {
-      const productImages = Array.from({ length: 2 }, (_, index) => `../src/assets/product${parseInt(product.idproduct)}.jpg`);
-      setImages(productImages);
+      const productImages = Array.from({ length: 2 }, (_, index) => {
+          return (index===0?
+          `../src/assets/product${product.idproduct}.jpg` :
+          `../src/assets/product${product.idproduct}-2.jpg`)
+          });      setImages(productImages);
     }
   }, [product]);
 
@@ -81,7 +82,7 @@ function ProductPage() {
                                     {product.name}
                                   </h2></div>
                                 <div>
-                                    <p className="price-wrapper"><span className="product-item-little-desc_product-price">${product.price}</span> <del className="product-item-little-desc_old-product-price">${product.old_price}</del></p>
+                                    <p className="price-wrapper"><span className="product-item-little-desc_product-price">${product.price}</span> {product.old_price ? <del className="product-item-little-desc_old-product-price">${product.old_price}</del> : null}</p>
                                     <p className="product-desc_content-text">{product.description}</p>
                                 </div>
                                 <div className="wishlist-cart">
