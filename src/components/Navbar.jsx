@@ -20,7 +20,7 @@ function Navbar(){
                 <div className="container">
                     <div className="navigation">
                         <div className="navigation-left-side">
-                            <NavLink to="/"><img src="src/assets/logo.svg" width="200px" alt="" /></NavLink>                        
+                            <NavLink to="/"><img src="./../src/assets/logo.svg" width="200px" alt="" /></NavLink>                        
                         </div>
                         <div className="navigation-right-side">
                             <nav>
@@ -51,7 +51,7 @@ function Navbar(){
                                 </li>}
                                 <li>
                                     <NavLink to="/cart">
-                                        <img src="src/assets/shopping-cart.svg" width="30px" alt=""/>
+                                        <img src="./../src/assets/shopping-cart.svg" width="30px" alt=""/>
                                     </NavLink>                        
                                 </li>
                             </ul>

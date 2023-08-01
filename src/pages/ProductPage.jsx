@@ -1,13 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import axios from "axios";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./../styles/ProductPage.css"
 import ImageSlider from "../components/ImagesSlider";
+import { AppContext } from "../components/AppContext";
 
 function ProductPage() {
   const {productId} = useParams();
   const [product, setProduct] = useState({})
   const [images, setImages] = useState([]);
+  const { cartItems, setCartItems } = useContext(AppContext);
+  const productInCart = cartItems.find((item) => item.productId === productId);
+  const quantityInCart = productInCart ? productInCart.quantity : 0;
+
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost/Api/api.php", {
@@ -22,6 +27,35 @@ function ProductPage() {
       console.error(error);
     }
   };
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    const productInCart = cartItems.find((item) => item.productId === productId);
+
+    if (productInCart) {
+      setCartItems((prevCartItems) =>
+        prevCartItems.map((item) =>
+          item.productId === productId
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      const {name, type, price, old_price} = product
+      setCartItems((prevCartItems) => [
+        ...prevCartItems,
+        {
+          productId,
+          name,
+          type,
+          price,
+          old_price,
+          quantity: 1,
+        },
+      ]);
+    }
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -51,7 +85,10 @@ function ProductPage() {
                                     <p className="product-desc_content-text">{product.description}</p>
                                 </div>
                                 <div className="wishlist-cart">
-                                        <button type="submit"  id="add-to-wishlist-btn">Add to cart</button>
+                                        <button onClick={handleAddToCart} type="submit"  id="add-to-wishlist-btn">Add to cart</button>
+                                        <div>
+                                          <p>The item has been added to the cart: {quantityInCart} times</p>
+                                        </div>
                                     <div className="wishlist-and-share">
                                         <p>Category:<span id="product-category-name">{product.type}</span></p>
                                         {/* <div className="share-product-social-medias">
