@@ -1,6 +1,7 @@
 import './styles/App.css';
 import Navbar from './components/Navbar';
-import {Route, Routes } from 'react-router-dom';
+import {Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Home from './pages/Home';
 import Clothes from './pages/Clothes';
 import Accessories from './pages/Accessories';
@@ -13,6 +14,12 @@ import ProductPage from './pages/ProductPage';
 
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <>
       <Navbar />

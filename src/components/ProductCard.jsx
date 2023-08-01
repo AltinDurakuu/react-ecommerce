@@ -79,18 +79,18 @@ function ProductCard({
           <div className="product-item_img">
             {outofstock && <div className="out-of-stock">Out Of Stock</div>}
             {oldPrice > 0 && <div className="sale">SALE!</div>}
-            <NavLink>
+            <p>
               <img src={`src/assets/product${productId}.jpg`} alt="" />
-            </NavLink>
+            </p>
             <div className="add-item-somewhere">
               {!cart ? (
-                <NavLink onClick={handleAddToCart} className="add-to-cart">
+                <button onClick={handleAddToCart} className="add-to-cart">
                   Add to Cart
-                </NavLink>
+                </button>
               ) : (
-                <NavLink onClick={handleDecrementQuantity} className="add-to-cart">
+                <button onClick={handleDecrementQuantity} className="add-to-cart">
                   Remove from cart
-                </NavLink>
+                </button>
               )}
               <div className="quantity-controls">
                 <button onClick={handleDecrementQuantity} className="quantity-btn">
@@ -105,14 +105,14 @@ function ProductCard({
           </div>
           <div className="product-item-little-desc">
             <div>
-              <NavLink className="product-item-little-desc_categories-name">
+              <p className="product-item-little-desc_categories-name">
                 {productType}
-              </NavLink>
+              </p>
             </div>
             <div>
-              <NavLink className="product-item-little-desc_product-name">
+              <p className="product-item-little-desc_product-name">
                 {productName}
-              </NavLink>
+              </p>
             </div>
             {oldPrice > 0 && (
               <del className="product-item-little-desc_old-product-price">

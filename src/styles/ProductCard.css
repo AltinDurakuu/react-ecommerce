@@ -39,6 +39,9 @@
     line-height: 40px;
   }
   .product-item_img .add-item-somewhere .add-to-cart {
+    background: #f3f3f3;
+    border: none;
+    cursor: pointer;
     border-right: 1px solid #f3f3f3;
     font-size: 14px;
     padding-top: 10px;
