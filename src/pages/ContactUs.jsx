@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./../styles/ContactUs.css"
-import axios from "axios";
+import axios from "./../components/axios";
 
 function ContactUs(){
     let [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ function ContactUs(){
         data.append('message', formData.message);
       
         axios
-          .post("http://localhost/Api/contactus.php", data)
+          .post("/contactus.php", data)
           .then((response) => {
                 alert(response.data);
                 setFormData({

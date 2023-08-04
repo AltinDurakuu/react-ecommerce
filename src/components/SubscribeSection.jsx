@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/SubscribeSection.css";
-import axios from "axios";
+import axios from "./axios";
 
 function SubscribeSection() {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ function SubscribeSection() {
     const formData = new FormData();
     formData.append("email", email);
     axios
-      .post("http://localhost/Api/insert_email.php", formData)
+      .post("/insert_email.php", formData)
       .then((response) => {
         alert(response.data)
       })

@@ -40,7 +40,7 @@ function LoginForm(){
         });
       
         axios
-          .post("http://localhost/Api/login2.php", data)
+          .post("/login2.php", data)
           .then((response) => {
             const loggedIn = JSON.parse(response.data.loggedin);
             setIsUserLogged(loggedIn);

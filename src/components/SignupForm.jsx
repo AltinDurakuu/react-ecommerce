@@ -93,7 +93,7 @@ function SignupForm() {
     });
   
     axios
-      .post("signup.php", data)
+      .post("/signup.php", data)
       .then((response) => {
         const responseData = response.data;
         setMessage(responseData);
