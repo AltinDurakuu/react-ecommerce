@@ -40,12 +40,14 @@ function ProductPage() {
       );
     } else {
       const {name, type, price, old_price} = product
+      const productName = name;
+      const productType = type;
       setCartItems((prevCartItems) => [
         ...prevCartItems,
         {
           productId,
-          name,
-          type,
+          productName,
+          productType,
           price,
           old_price,
           quantity: 1,

@@ -1,0 +1,56 @@
+/* Add this CSS in your main CSS file or use styled-components or CSS modules */
+
+.checkout-products-container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+  
+  .checkout-products-title {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkout-product {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .product-name {
+    font-size: 20px;
+    color: #222;
+  }
+  
+  .product-quantity {
+    font-size: 16px;
+    color: #777;
+  }
+  
+  .product-price,
+  .product-total {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .product-divider {
+    margin-top: 10px;
+    border: none;
+    border-top: 1px solid #ddd;
+  }
+  
+  .checkout-products-total {
+    text-align: right;
+    margin-top: 20px;
+  }
+  
+  .checkout-products-total h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  

@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.1.1",
     "axios": "^1.4.0",
     "connect-history-api-fallback": "^2.0.0",
+    "jsonwebtoken": "^9.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2"

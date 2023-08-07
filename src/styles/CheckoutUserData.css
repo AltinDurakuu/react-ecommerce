@@ -1,0 +1,49 @@
+/* Styling for the form container */
+.checkoutForm {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for form labels and inputs */
+  .checkoutForm label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .checkoutForm input,
+  .checkoutForm textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .checkoutForm textarea {
+    resize: vertical;
+  }
+  
+  .checkoutForm button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .checkoutForm button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Additional styles for spacing */
+  br {
+    margin-bottom: 10px;
+  }
+  

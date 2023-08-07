@@ -1,0 +1,7 @@
+.checkoutFlex{
+    display: flex;
+    justify-content: center;
+}
+.checkoutContainer{
+    margin-top: 50px;
+}

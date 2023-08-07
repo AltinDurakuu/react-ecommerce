@@ -11,6 +11,7 @@ import Signup from './pages/Signup';
 import Cart from './pages/Cart';
 import Footer from './components/Footer';
 import ProductPage from './pages/ProductPage';
+import Checkout from './pages/Checkout';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/product/:productId" element={<ProductPage />} />
       </Routes>
       <Footer />
