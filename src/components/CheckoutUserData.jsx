@@ -1,36 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import "./../styles/CheckoutUserData.css"
 
-function CheckoutUserData (){
-  const [userData, setUserData] = useState({
-    name: '',
-    email: '',
-    phoneNumber: '',
-    address: ''
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUserData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //probably gonna remove the submit button
-  };
-
+function CheckoutUserData (props){
   return (
-    <form className='checkoutForm' onSubmit={handleSubmit}>
+    <form className='checkoutForm' onSubmit={props.handleSubmit}>
       <label>
         Name:
         <input
           type="text"
           name="name"
-          value={userData.name}
-          onChange={handleInputChange}
+          value={props.name}
+          onChange={props.handleInputChange}
         />
       </label>
       <br />
@@ -39,8 +19,8 @@ function CheckoutUserData (){
         <input
           type="email"
           name="email"
-          value={userData.email}
-          onChange={handleInputChange}
+          value={props.email}
+          onChange={props.handleInputChange}
         />
       </label>
       <br />
@@ -49,8 +29,8 @@ function CheckoutUserData (){
         <input
           type="tel"
           name="phoneNumber"
-          value={userData.phoneNumber}
-          onChange={handleInputChange}
+          value={props.phoneNumber}
+          onChange={props.handleInputChange}
         />
       </label>
       <br />
@@ -58,8 +38,8 @@ function CheckoutUserData (){
         Address:
         <textarea
           name="address"
-          value={userData.address}
-          onChange={handleInputChange}
+          value={props.address}
+          onChange={props.handleInputChange}
         />
       </label>
       <br />
