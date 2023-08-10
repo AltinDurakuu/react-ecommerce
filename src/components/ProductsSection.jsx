@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 import "./../styles/ProductsSection.css";
 import axios from "./axios";
 
-function ProductsSection({ sectionTitle, sectionPhrase, filter }) {
+function ProductsSection({ sectionTitle, sectionPhrase, filter, id }) {
   const [products, setProducts] = useState([]);
   let saleSection = false;
   if(filter == "sale_percentage"){
@@ -42,7 +42,7 @@ function ProductsSection({ sectionTitle, sectionPhrase, filter }) {
   ));
 
   return (
-    <section className="products-section products-featured full-block" id={saleSection ? "on-sale" : undefined}>
+    <section className="products-section products-featured full-block" id={id}>
       <div className="container">
         <div className="products-section_title">
           <h3>{sectionTitle}</h3>

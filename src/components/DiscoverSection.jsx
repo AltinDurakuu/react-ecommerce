@@ -9,18 +9,18 @@ function DiscoverSection(){
                 <div className="category-content">
                     <div className="category-content-left-side">
                         <div className="category-content-left-side-fashion">
-                            <DiscoverBanner name="Clothes" link="/clothes"/>
+                            <DiscoverBanner name="Clothes" To="/clothes"/>
                         </div>
                         <div className="category-content-left-side-best-sale big-category">
-                            <DiscoverBanner name="Popular Items" link="#popular_items"/>
+                            <DiscoverBanner name="Popular Items" link="popular_items"/>
                          </div>
                     </div>
                     <div className="category-content-right-side">
                         <div className="category-content-right-side-accessories big-category">
-                                <DiscoverBanner name="Recent releases" link="#recent_releases"/>
+                                <DiscoverBanner name="Recent releases" link="recent_releases"/>
                         </div>
                         <div className="category-content-right-side-others">
-                                <DiscoverBanner name="Accessories" link="/accessories"/>
+                                <DiscoverBanner name="Accessories" To="/accessories"/>
                         </div>      
                     </div>
             </div>

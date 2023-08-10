@@ -12,6 +12,9 @@
     height: 100%;
     width: 100%;
   }
+div.hero-banner.full-block{
+  display: block !important;
+}
 .hero-banner .container {
     height: 100%;
     display: flex;

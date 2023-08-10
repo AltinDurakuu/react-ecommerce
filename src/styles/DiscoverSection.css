@@ -1,6 +1,7 @@
 .category-content {
     display: flex;
     justify-content: space-between;
+    margin-top: 80px;
   }
 .category-content .big-category {
     padding-bottom: 340px;

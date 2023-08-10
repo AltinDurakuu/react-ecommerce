@@ -3,10 +3,18 @@ import "../styles/HeroBanner.css"
 
 
 function HeroBanner(){
-    const scrollToSection = (sectionId) => {
+    const scrollToSection = (sectionId, targetPosition = 0) => {
         const section = document.getElementById(sectionId);
         if (section) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (targetPosition > 0) {
+            const targetPosition = section.offsetTop - 100;
+            window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth"
+            });
+            }else{
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
       };
     return (
@@ -20,7 +28,7 @@ function HeroBanner(){
                                 <p>For Woman Who Like To Follow Trends But Have A <br /> Strong Sense Of Individual Style</p>
                                 <div className="hero-banner-left-side_content-btns">
                                     <a onClick={() => scrollToSection('discover-store')}>Discover store</a>
-                                    <a onClick={() => scrollToSection('on-sale')}>Special Offers</a>
+                                    <a onClick={() => scrollToSection('on-sale', 1)}>Special Offers</a>
                                 </div>
                             </div>
                         </div>
