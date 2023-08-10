@@ -4,8 +4,6 @@ import './../styles/CheckoutProducts.css'
 const CheckoutProducts = () => {
   const cartItems = JSON.parse(localStorage.getItem('cartItems'));
 
-
-
   const calculateTotalPrice = () => {
     if(cartItems){
       let total = 0;
