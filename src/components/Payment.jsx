@@ -31,8 +31,7 @@ function Payment({ userData }) {
             }
         }
         )
-        const totalAmount = response.data.totalAmount;
-
+        const totalAmount = parseFloat(response.data.totalAmount).toFixed(2);;
         return actions.order.create({
             purchase_units: [
                 {
@@ -49,9 +48,31 @@ function Payment({ userData }) {
     }
 };
 
-
-
-
+const onApprove = async (data, actions) => {
+    try {  
+    const productIdsAndQuantities = cartItems.map((item) => ({
+        productId: item.productId,
+        quantity: item.quantity
+    }));
+     const response = await axios.post('/order.php', {
+            name: userData.name,
+            email: userData.email,
+            phoneNumber: userData.phoneNumber,
+            address: userData.address,
+            productIdsAndQuantities: productIdsAndQuantities
+        }, {
+            headers: {
+            'Content-Type': 'multipart/form-data'
+            }
+        }
+        )
+        console.log(response, data)
+        return true;
+    } catch (error) {
+        console.error("Error calculating total amount:", error);
+        return null;
+    }
+};
   
   return (
     <div className="full-block">
@@ -60,9 +81,7 @@ function Payment({ userData }) {
           <PayPalButtons
             forceReRender={[userData]}
             createOrder={(data, actions) => createOrder(data, actions)}
-            onApprove={(data, actions) => {
-              console.log("Payment approved:", data);
-            }}
+            onApprove={(data, actions) => onApprove(data, actions)}
           />
         </PayPalScriptProvider>
       </div>
