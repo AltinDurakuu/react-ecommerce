@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/SubscribeSection.css";
 import axios from "./axios";
+import Notification from "./Notification";
 
 function SubscribeSection() {
   const [email, setEmail] = useState("");
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationText, setNotificationText] = useState("");
+
 
   function handleChange(event) {
     setEmail(event.target.value);
   }
-
+  const closeNotification = () => {
+    setShowNotification(false);
+    setNotificationText("");
+    if (onClose) {
+      onClose(); 
+    }
+  };  
+  useEffect(() => {
+    console.log("Notification Text:", notificationText);
+    console.log("Show Notification:", showNotification);
+  }, [showNotification, notificationText]);
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData();
@@ -16,9 +30,14 @@ function SubscribeSection() {
     axios
       .post("/insert_email.php", formData)
       .then((response) => {
-        alert(response.data)
+        console.log(typeof response.data.message);
+        console.log(notificationText);
+        console.log(showNotification);
+        setNotificationText(response.data.message)
+        setShowNotification(true)
       })
       .catch((error) => {
+        setNotificationText("Something went wrong!")
         console.error(error);
       });
       setEmail("");
@@ -50,6 +69,7 @@ function SubscribeSection() {
           </div>
         </div>
       </div>
+      {showNotification && <Notification show={showNotification} onClose={closeNotification} text={notificationText} />}
     </section>
   );
 }

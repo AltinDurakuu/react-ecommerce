@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./../styles/Footer.css"
 
 function Footer(){
+    const isUserLoggedLS = localStorage.getItem("isUserLogged") === "true";
     return (
         <footer className="footer-section full-block">
             <div className="container">
@@ -19,8 +20,8 @@ function Footer(){
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="/clothes">Clothes</NavLink></li>
                     <li><NavLink to="/contactus">Contact Us</NavLink></li>
-                    <li><NavLink to="/login">Log In</NavLink></li>
-                    <li><NavLink to="/signup">Sign Up</NavLink></li>
+                    {!isUserLoggedLS && <li><NavLink to="/login">Log In</NavLink></li>}
+                    {!isUserLoggedLS && <li><NavLink to="/signup">Sign Up</NavLink></li>}
                     </ul>
                 </div>
                 <div className="footer-section-right-side">
