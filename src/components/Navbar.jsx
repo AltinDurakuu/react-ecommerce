@@ -54,6 +54,9 @@ function Navbar(){
                                         <img src="./../src/assets/shopping-cart.svg" width="30px" alt=""/>
                                     </NavLink>                        
                                 </li>
+                                <li>
+                                    <NavLink to="/checkout">Checkout</NavLink>                        
+                                </li>
                             </ul>
                             </nav>
                         </div>
