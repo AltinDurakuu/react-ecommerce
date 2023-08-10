@@ -9,6 +9,7 @@ function Navbar(){
     const { isUserLogged, setIsUserLogged, handleLogout } = useContext(
         AppContext
       );
+    const isUserLoggedLS = localStorage.getItem("isUserLogged") === "true";
     function logOut(){
         localStorage.setItem("isUserLogged", false)
         localStorage.setItem("user", null);
@@ -37,16 +38,16 @@ function Navbar(){
                                 <li>
                                     <NavLink className="page"  to="/contactUs">Contact Us</NavLink>                        
                                 </li>
-                                {!isUserLogged && <li>
+                                {!isUserLoggedLS && <li>
                                    <NavLink className="page"  to="/login">Log In</NavLink>                 
                                 </li>}
-                                {!isUserLogged && <li>
+                                {!isUserLoggedLS && <li>
                                      <NavLink className="page"  to="/signup">Sign Up</NavLink>                   
                                 </li>}
-                                {isUserLogged && <li>
+                                {(isUserLogged || isUserLoggedLS) && <li>
                                    <NavLink to="/" onClick={logOut}  className="custom-active-class">Log Out</NavLink>                     
                                 </li>}
-                                {isUserLogged && <li>
+                                {(isUserLogged || isUserLoggedLS) && <li>
                                    <span className="navlinkName">Hello {JSON.parse(localStorage.getItem("user")).username}</span>                     
                                 </li>}
                                 <li>
