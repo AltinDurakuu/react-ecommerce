@@ -13,10 +13,36 @@ function Checkout(){
         phoneNumber: '',
         address: ''
       });
-      const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(userData)
-      };
+      function setUserDataOnLoad(message, user){
+        useEffect((message, user)=>{
+          if(message == "User found"){
+            setUserData(user)
+          }
+        }, [])
+      }
+      
+      const token = localStorage.getItem('token');
+
+      useEffect(() => {
+        if (token) {
+          axios
+            .post("/getUserData.php", { token }, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((response) => {
+              console.log(response)
+              if (response.data.message === "User found") {
+                setUserData(response.data.user);
+              }
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
+      }, []);
+
       const handleInputChange = (e) => {
         const { name, value } = e.target;
         setUserData((prevData) => ({
@@ -29,7 +55,7 @@ function Checkout(){
         <main className="full-block">
             <div className="checkoutContainer">
                 <div className="checkoutFlex">
-                    <CheckoutUserData handleInputChange={handleInputChange} handleSubmit={handleSubmit} name={userData.name}
+                    <CheckoutUserData handleInputChange={handleInputChange} name={userData.name}
                         email={userData.email} phoneNumber={userData.phoneNumber} address={userData.address} 
                     />
                     <CheckoutProducts />

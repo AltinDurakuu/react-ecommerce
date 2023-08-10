@@ -4,7 +4,6 @@ import axios from "./axios";
 import "./../styles/Payment.css";
 
 function Payment({ userData }) {
-  const [paymentDetails, setPaymentDetails] = useState(null);
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import "./../styles/CheckoutUserData.css"
+import "./../styles/CheckoutUserData.css";
 
 function CheckoutUserData (props){
   return (
-    <form className='checkoutForm' onSubmit={props.handleSubmit}>
+    <form className='checkoutForm'>
       <label>
         Name:
         <input
@@ -43,7 +43,6 @@ function CheckoutUserData (props){
         />
       </label>
       <br />
-      <button type="submit">Submit</button>
     </form>
   );
 };
