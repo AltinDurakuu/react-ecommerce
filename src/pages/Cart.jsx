@@ -23,6 +23,7 @@ function Cart(){
         <main className="full-block">
             <section className="products-section products-accessories full-block" id="on-sale">
                 <div className="container">
+                    <h2 className="pageTitle">Cart</h2>
                     <div className="grid-container a" id="clothes_grid">
                     {productsToRender}
                     </div>

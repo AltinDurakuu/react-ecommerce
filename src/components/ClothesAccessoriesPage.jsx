@@ -87,6 +87,7 @@ function ClothesAccessoriesPage({type}) {
       />
         <section className="products-section products-accessories full-block" id="on-sale">
           <div className="container">
+            <h2  className="pageTitle">{type === "clothes" ? "Clothes" : "Accessories"}</h2>
             <div className="grid-container a" id="clothes_grid">
               {productsToRender}
             </div>

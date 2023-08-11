@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import CheckoutUserData from "../components/CheckoutUserData";
 import Payment from "../components/Payment";
 import CheckoutProducts from "../components/CheckoutProducts";
 import "./../styles/Checkout.css"
 import axios from "../components/axios";
-
+import { AppContext } from "./../components/AppContext";
 
 function Checkout(){
     const [userData, setUserData] = useState({
@@ -13,6 +13,9 @@ function Checkout(){
         phoneNumber: '',
         address: ''
       });
+      const { cartItems, setCartItems } = useContext(AppContext);
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      
       function setUserDataOnLoad(message, user){
         useEffect((message, user)=>{
           if(message == "User found"){

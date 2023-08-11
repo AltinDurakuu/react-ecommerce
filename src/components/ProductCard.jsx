@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./../styles/ProductCard.css";
 import { NavLink, useNavigate } from "react-router-dom";
-
 import { AppContext } from "./AppContext";
 
 function ProductCard({
@@ -19,6 +18,9 @@ function ProductCard({
   const quantityInCart = productInCart ? productInCart.quantity : 0;
   const navigate  = useNavigate();
 
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
   const handleProductClicked = (e) => {
     e.stopPropagation();
     const productDetails = {
@@ -28,7 +30,6 @@ function ProductCard({
         oldPrice,
         outofstock,
       };
-      sessionStorage.setItem("productDetails", JSON.stringify(productDetails))
     navigate("/product/" + productId);
   }
   const handleAddToCart = (e) => {
@@ -70,6 +71,13 @@ function ProductCard({
     );
   };
 
+  const handleRemoveFromCart = (e) => {
+    e.stopPropagation();
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((item) => item.productId !== productId)
+    );
+  };
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
@@ -88,7 +96,7 @@ function ProductCard({
                   Add to Cart
                 </button>
               ) : (
-                <button onClick={handleDecrementQuantity} className="add-to-cart">
+                <button onClick={handleRemoveFromCart} className="add-to-cart">
                   Remove from cart
                 </button>
               )}
