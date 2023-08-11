@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/LoginForm.css"
 import axios from "./axios";
 import { AppContext } from "./AppContext";
+import Notification from "./../components/Notification";
 
 function LoginForm(){
     const [formData, setFormData] = useState({
@@ -12,15 +13,25 @@ function LoginForm(){
     const { isUserLogged, setIsUserLogged, handleLoginToken } = useContext(
       AppContext
     );
-
+    
+    const [showNotification, setShowNotification] = useState(false);
+    const [notificationText, setNotificationText] = useState("");
+  
+    const closeNotification = () => {
+      setShowNotification(false);
+      setNotificationText("");
+      if(isUserLogged){
+        navigate("/");
+      }
+    }; 
 
     const navigate  = useNavigate();
     
     useEffect(() => {
-      if (isUserLogged) {
+      if (isUserLogged && !showNotification) {
         navigate("/");
       }
-    }, [isUserLogged, navigate]);
+    }, [isUserLogged, navigate, showNotification]);
 
     const handleChange = (e) => {
         const { name, value} = e.target;
@@ -45,10 +56,11 @@ function LoginForm(){
             const loggedIn = JSON.parse(response.data.loggedin);
             setIsUserLogged(loggedIn);
             localStorage.setItem("isUserLogged", loggedIn);
+            setNotificationText(response.data.message);
+            setShowNotification(true);
             if (loggedIn) {
               handleLoginToken(response.data.token);
               localStorage.setItem("user", JSON.stringify(response.data.user));
-              navigate("/");
             }
           })
           .catch((error) => {
@@ -76,6 +88,7 @@ function LoginForm(){
                     <button className="btn btn--form" type="submit" value="Log in">Log in</button>
                 </form>
             </div>
+            {showNotification && <Notification show={showNotification} onClose={closeNotification} text={notificationText} />}
         </section>
     )
 }

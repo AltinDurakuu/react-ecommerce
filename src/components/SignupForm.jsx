@@ -3,7 +3,7 @@ import "./../styles/SignupForm.css";
 import axios from "./axios";
 import { Link, useNavigate  } from "react-router-dom";
 import { AppContext } from "./AppContext";
-
+import Notification from "./../components/Notification";
 
 function SignupForm() {
   const [formData, setFormData] = useState({
@@ -18,6 +18,19 @@ function SignupForm() {
   });
   const [errors, setErrors] = useState([]);
   const [message, setMessage] = useState("");
+  const [signedUp, setSignedUp] = useState(false);
+
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationText, setNotificationText] = useState("");
+
+  const closeNotification = () => {
+    setShowNotification(false);
+    setNotificationText("");
+    setMessage("");
+    if(signedUp){
+      navigate("/login");
+    }
+  }; 
 
   const navigate  = useNavigate();
   const { isUserLogged, setIsUserLogged } = useContext(AppContext);
@@ -83,7 +96,8 @@ function SignupForm() {
     setErrors(validationErrors); 
   
     if (validationErrors.length > 0) {
-      alert(validationErrors);
+      setNotificationText(validationErrors);
+      setShowNotification(true);
       return;
     }
   
@@ -96,9 +110,11 @@ function SignupForm() {
       .post("/signup.php", data)
       .then((response) => {
         const responseData = response.data;
-        setMessage(responseData);
-        if (responseData === "Signed up Successfully") {
-          navigate("/login"); // Assuming you have a route set up for the login page
+        setMessage(responseData.message);
+        setNotificationText(response.data.message);
+        setShowNotification(true);
+        if(responseData.message == "Signed up Successfully"){
+          setSignedUp(true);
         }
       })
       .catch((error) => {
@@ -108,7 +124,8 @@ function SignupForm() {
 
   useEffect(() => {
     if (message !== "") {
-      alert(message);
+      setNotificationText(message);
+      setShowNotification(true);
     }
   }, [message]);
 
@@ -234,6 +251,7 @@ function SignupForm() {
           </button>
         </form>
       </div>
+      {showNotification && <Notification show={showNotification} onClose={closeNotification} text={notificationText} />}
     </section>
   );
 }
