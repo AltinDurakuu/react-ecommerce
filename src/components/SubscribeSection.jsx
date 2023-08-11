@@ -19,10 +19,6 @@ function SubscribeSection() {
       onClose(); 
     }
   };  
-  useEffect(() => {
-    console.log("Notification Text:", notificationText);
-    console.log("Show Notification:", showNotification);
-  }, [showNotification, notificationText]);
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData();

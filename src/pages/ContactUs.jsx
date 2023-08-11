@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./../styles/ContactUs.css"
 import axios from "./../components/axios";
+import Notification from "./../components/Notification";
 
 function ContactUs(){
     let [formData, setFormData] = useState({
@@ -8,6 +9,18 @@ function ContactUs(){
         email: "",
         message: ""
     })
+
+    const [showNotification, setShowNotification] = useState(false);
+    const [notificationText, setNotificationText] = useState("");
+  
+    const closeNotification = () => {
+      setShowNotification(false);
+      setNotificationText("");
+      if (onClose) {
+        onClose(); 
+      }
+    };  
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevValues) => ({
@@ -26,7 +39,8 @@ function ContactUs(){
         axios
           .post("/contactus.php", data)
           .then((response) => {
-                alert(response.data);
+                setNotificationText(response.data.message);
+                setShowNotification(true);
                 setFormData({
                     name: "",
                     email: "",
@@ -61,6 +75,7 @@ function ContactUs(){
                     </form>
                 </div>
             </section>
+            {showNotification && <Notification show={showNotification} onClose={closeNotification} text={notificationText} />}
         </main>
     )
 }
