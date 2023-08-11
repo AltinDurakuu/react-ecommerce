@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./../styles/GetProductsForm.css";
 
-function GetProductsForm({handleChange, handleSubmit, search, category, price}) {
-
+function GetProductsForm({handleChange, handleSubmit, search, category, price, resetOnClick}) {
 
   return (
     <section className="clothes-accessories full-block">
@@ -58,7 +57,7 @@ function GetProductsForm({handleChange, handleSubmit, search, category, price}) 
               type="range"
               id="price"
               name="price"
-              min="0"
+              min="10"
               max="1000"
               step="10"
               value={price}
@@ -66,7 +65,12 @@ function GetProductsForm({handleChange, handleSubmit, search, category, price}) 
             />
             <span id="priceValue">&lt;{price}</span>
           </div>
-          <button className="btn btn--form" type="submit" value="Search">
+          <input
+            type="reset"
+            className="getProductsBtns"
+            onClick={resetOnClick}
+          />
+          <button className="btn btn--form getProductsBtns"   type="submit" value="Search">
             Search
           </button>
         </form>

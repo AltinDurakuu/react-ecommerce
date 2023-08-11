@@ -8,8 +8,8 @@
     margin-top: 50px;
     width: 100%;
     background-color: #fff;
-    padding: 20px; /* Add padding for spacing */
-    border-radius: 5px; /* Add border radius for a rounded appearance */
+    padding: 20px;
+    border-radius: 5px; 
   }
   
   .clothes-accessories-form {
@@ -26,25 +26,26 @@
     display: block;
     margin-bottom: 8px;
     margin-right: 10px;
-    font-weight: bold; /* Make the labels bold for better readability */
+    font-weight: bold; 
   }
   
-  .btn--form {
-    background-color: #2b55dd;
-    color: #fdf2e9;
-    padding: 8px 16px; /* Increase padding for a larger button */
+.getProductsBtns {
+    background-color: #9D9D9D;
+    color: white;
     border: none;
-    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
+    transition: background-color 0.3s ease-in-out;
+}
+input[type = reset]{
+    margin-right: 20px;
+}
+
+.getProductsBtns:hover {
+    background-color: #7C7C7C; 
+}
   
-  .btn--form:hover {
-    background-color: #152f47;
-    color: #ccc;
-  }
-  
-  /* Adjust input and range styles */
   input[type=text],
   input[type=range] {
     padding: 8px;
@@ -53,7 +54,6 @@
     outline: none;
   }
   
-  /* Adjust checkbox styles */
   input[type=checkbox] {
-    margin-right: 5px; /* Add spacing between checkboxes and labels */
+    margin-right: 5px; 
   }

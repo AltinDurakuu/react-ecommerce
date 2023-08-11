@@ -65,8 +65,9 @@ const onApprove = async (data, actions) => {
             }
         }
         )
-        console.log(response, data)
-        return true;
+        return actions.order.capture().then(function(details){
+          console.log(details)
+        });
     } catch (error) {
         console.error("Error calculating total amount:", error);
         return null;
@@ -76,7 +77,7 @@ const onApprove = async (data, actions) => {
   return (
     <div className="full-block">
       <div className="paymentButtons">
-        <PayPalScriptProvider options={{ clientId: "AT6GZrfq-IgOwXV9t8UATxBG9m9vESe6qfTOSV9-nXgshLYlMfByFWE8-QwtmxMtRTZJznISp-TL6jFv" }}>
+        <PayPalScriptProvider options={{ clientId: "AUxYUl3I6Uev8zL9tMUd1BkLovukpM1HjpSlxHRAtroUGAM3eDZImFaUU8Wui523HMgvfFywxbSuWjpL" }}>
           <PayPalButtons
             forceReRender={[userData]}
             createOrder={(data, actions) => createOrder(data, actions)}

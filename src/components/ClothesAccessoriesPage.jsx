@@ -19,6 +19,15 @@ function ClothesAccessoriesPage({type}) {
     }));
   };
 
+  const resetOnClick = () =>{
+    setFormValues({
+      search: "",
+      category: "",
+      price: 1000,
+    })
+    fetchData();
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -74,6 +83,7 @@ function ClothesAccessoriesPage({type}) {
         category={formValues.category}
         price={formValues.price}
         search={formValues.search}
+        resetOnClick={resetOnClick}
       />
         <section className="products-section products-accessories full-block" id="on-sale">
           <div className="container">
