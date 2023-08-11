@@ -97,3 +97,15 @@
   .product-section .full-product-page .about-product .product-desc .wishlist-cart .wishlist-and-share .share-product-social-medias ul a {
     color: #000;
   }
+  .product-page-add-remove {
+    display: flex;
+  }
+  .product-page-add-remove button{
+    text-align: center !important;
+  }
+  .product-page-add-remove button:first-child{
+    margin-right: 10px;
+  }
+.product-page-btns .quantity-controls div button{
+  margin-left: 10px;
+}

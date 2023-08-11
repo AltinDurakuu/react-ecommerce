@@ -68,6 +68,24 @@ function ProductPage() {
           });      setImages(productImages);
     }
   }, [product]);
+  
+  const handleDecrementQuantity = (e) => {
+    e.stopPropagation();
+    setCartItems((prevCartItems) =>
+      prevCartItems.map((item) =>
+        item.productId === productId && item.quantity > 0
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      ).filter((item) => item.quantity > 0)
+    );
+  };
+
+  const handleRemoveFromCart = (e) => {
+    e.stopPropagation();
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((item) => item.productId !== productId)
+    );
+  };
 
   return (
     <main className="full-block">
@@ -88,7 +106,23 @@ function ProductPage() {
                                     <p className="product-desc_content-text">{product.description}</p>
                                 </div>
                                 <div className="wishlist-cart">
-                                        <button onClick={handleAddToCart} type="submit"  id="add-to-wishlist-btn">Add to cart</button>
+                                <div className="product-page-btns">
+                                  <div className="product-page-add-remove">
+                                    <button onClick={handleAddToCart} type="submit"  id="add-to-wishlist-btn">Add to cart</button>
+                                    <button onClick={handleRemoveFromCart} type="submit"  id="add-to-wishlist-btn">Remove from cart</button>
+                                  </div>
+                                  <div className="quantity-controls">
+                                    <div>
+                                      Control the quantity
+                                      <button onClick={handleDecrementQuantity} className="quantity-btn">
+                                        -
+                                      </button>
+                                      <button onClick={handleAddToCart} className="quantity-btn">
+                                        +
+                                      </button>
+                                    </div>
+                                  </div>        
+                                </div>
                                         <div>
                                           <p>The item has been added to the cart: {quantityInCart} times</p>
                                         </div>
