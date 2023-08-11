@@ -1,6 +1,7 @@
 <?php
 require_once 'database.php';
-
+$response = array();
+$response['message'] = "Sorry, something went wrong!";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
 
@@ -9,15 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        echo "Email inserted successfully";
-    } else {
-        echo "Failed to insert email";
+        $response['message'] = "Thanks for subscription!";
+    }else{
+        $response['message'] = "It looks like you already are subscribed to our newsletter!";
     }
-
     $stmt->close();
-} else {
-    echo "Invalid request method";
 }
-
+echo json_encode($response);
 $conn->close();
 ?>

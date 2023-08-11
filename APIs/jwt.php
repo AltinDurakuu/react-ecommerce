@@ -5,9 +5,11 @@ require_once 'vendor/src/SignatureInvalidException.php';
 require_once 'vendor/src/JWT.php';
 
 use \Firebase\JWT\JWT;
+use \Firebase\JWT\KEY;
+$secretKey = "altini";
 
 function generateJwtToken($payload) {
-  $secretKey = bin2hex(random_bytes(32));
+  global $secretKey;
   define('JWT_SECRET_KEY', $secretKey);
   
   try {
@@ -19,16 +21,15 @@ function generateJwtToken($payload) {
 }
 
 function verifyJwtToken($jwtToken) {
-  if (!defined('JWT_SECRET_KEY')) {
-    return null;
-  }
-  
+  global $secretKey;
+ 
   try {
-    $decoded = JWT::decode($jwtToken, JWT_SECRET_KEY, array('HS256'));
-    return $decoded;
+      $decoded = (json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $jwtToken)[1])))));
+      return $decoded;
   } catch (Exception $e) {
-    return null;
+      return null;
   }
 }
+
 
 ?>

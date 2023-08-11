@@ -1,12 +1,10 @@
 <?php
 require_once 'database.php';
-require_once 'jwt.php'; 
-
 $response = array();
 $response['message'] = "";
 $response['loggedin'] = false;
-$response['user'] = null;
-
+$response['userInfo'] = array();
+// Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $emailOrUsername = $_POST['login_username_email'];
     $password = $_POST['login_password'];
@@ -24,23 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($result->num_rows === 1) {
             $user = $result->fetch_assoc();
             if (password_verify($password, $user['password'])) {
-                $response['message'] = "Hello " . $user['username'] . "! Have fun!";
+                $response['message'] = "Logged in";
+                $response['userInfo']['id'] = $user['iduser'];
+                $response['userInfo']['name'] = $user['name'];
+                $response['userInfo']['username'] = $user['username'];
+                $response['userInfo']['email'] = $user['email'];
                 $response['loggedin'] = true;
-
-                $tokenPayload = array(
-                    'username' => $user['username'],
-                    'name' => $user['name'],
-                    'iduser' => $user['iduser']
-                );
-                $jwtToken = generateJwtToken($tokenPayload);
-
-                $response['token'] = $jwtToken;
-
-                // Set the user data in the response
-                $response['user'] = array(
-                    'username' => $user['username'],
-                    'name' => $user['name'],
-                );
             } else {
                 $response['message'] = "Incorrect password!";
             }
@@ -48,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $response['message'] = "Invalid email/username!";
         }
     } else {
-        $response['message'] = "An error ocurred. Please try again later!";
+        $response['message'] = "Error executing query: " . $stmt->error;
     }
     $stmt->close();
 }

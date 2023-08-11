@@ -9,6 +9,7 @@ $type = $_GET['type'] ?? '';
 $price = $_GET['price'] ?? '';
 $name = $_GET['name'] ?? '';
 $times_sold = $_GET['times_sold'] ?? '';
+$productId = $_GET['productId'] ?? '';
 
 if (!empty($category)) {
     $filters[] = "category = '" . $conn->real_escape_string($category) . "'";
@@ -20,7 +21,9 @@ if (!empty($type)) {
 if (!empty($price)) {
     $filters[] = "price <= " . floatval($price);
 }
-
+if (!empty($productId)) { // Add this block to filter by productId
+    $filters[] = "idproduct = " . intval($productId);
+}
 if (!empty($name)) {
     $filters[] = "(name LIKE '%" . $conn->real_escape_string($name) . "%' OR description LIKE '%" . $conn->real_escape_string($name) . "%')";
 }

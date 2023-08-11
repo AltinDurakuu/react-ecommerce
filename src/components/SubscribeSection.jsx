@@ -15,9 +15,6 @@ function SubscribeSection() {
   const closeNotification = () => {
     setShowNotification(false);
     setNotificationText("");
-    if (onClose) {
-      onClose(); 
-    }
   };  
   function handleSubmit(event) {
     event.preventDefault();

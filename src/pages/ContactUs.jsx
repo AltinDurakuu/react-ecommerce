@@ -16,9 +16,6 @@ function ContactUs(){
     const closeNotification = () => {
       setShowNotification(false);
       setNotificationText("");
-      if (onClose) {
-        onClose(); 
-      }
     };  
 
     const handleChange = (event) => {

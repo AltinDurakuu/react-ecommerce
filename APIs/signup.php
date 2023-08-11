@@ -1,5 +1,9 @@
 <?php
 require_once 'database.php';
+
+$response = array();
+$response['message'] = "";
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $username = $_POST['username'];
@@ -91,9 +95,9 @@ if (empty($errors)) {
     $stmt->bind_param("ssssss", $name, $username, $email, $passwordHash, $address, $phone);
 
     if ($stmt->execute()) {
-        echo "Signed up Successfully";
+        $response['message'] = "Signed up Successfully";
     } else {
-        echo "Error adding user: " . $stmt->error;
+        $response['message'] = "Something went wrong! Please try again!";
     }
 
     $stmt->close();
@@ -103,11 +107,10 @@ if (empty($errors)) {
         foreach ($errors as $error) {
             $errorString .= $error . "\n";
         }
-
-        echo $errorString;
+        $response['message'] = $errorString;;
       }
   }
 
 } 
-
+echo json_encode($response);
 ?>
