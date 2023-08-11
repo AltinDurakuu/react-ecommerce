@@ -1,19 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "./axios";
 import "./../styles/Payment.css";
+import Notification from "./../components/Notification";
+import { AppContext } from "./AppContext";
 
 function Payment({ userData }) {
-  const [cartItems, setCartItems] = useState([]);
+  const [checkoutCartItems, setCheckoutCartItems] = useState([]);
+  const { cartItems, setCartItems } = useContext(AppContext);
+  
+
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationText, setNotificationText] = useState("");
+
+  const closeNotification = () => {
+    setShowNotification(false);
+    setNotificationText("");
+  }; 
 
   useEffect(() => {
     const cartItemsData = JSON.parse(localStorage.getItem("cartItems"));
-    setCartItems(cartItemsData);
+    setCheckoutCartItems(cartItemsData);
   }, []);
 
   const createOrder = async (data, actions) => {
     try {
-        const productIdsAndQuantities = cartItems.map((item) => ({
+        const productIdsAndQuantities = checkoutCartItems.map((item) => ({
             productId: item.productId,
             quantity: item.quantity
         }));
@@ -49,7 +61,7 @@ function Payment({ userData }) {
 
 const onApprove = async (data, actions) => {
     try {  
-    const productIdsAndQuantities = cartItems.map((item) => ({
+    const productIdsAndQuantities = checkoutCartItems.map((item) => ({
         productId: item.productId,
         quantity: item.quantity
     }));
@@ -65,6 +77,11 @@ const onApprove = async (data, actions) => {
             }
         }
         )
+        setNotificationText(response.data.message);
+        setShowNotification(true);
+        setCheckoutCartItems([]);
+        setCartItems([])
+        localStorage.removeItem('cartItems');
         return actions.order.capture().then(function(details){
           console.log(details)
         });
@@ -85,6 +102,7 @@ const onApprove = async (data, actions) => {
           />
         </PayPalScriptProvider>
       </div>
+      {showNotification && <Notification show={showNotification} onClose={closeNotification} text={notificationText} />}
     </div>
   );
 }
