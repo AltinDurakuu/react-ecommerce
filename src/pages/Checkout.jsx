@@ -16,14 +16,6 @@ function Checkout(){
       const { cartItems, setCartItems } = useContext(AppContext);
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
       
-      function setUserDataOnLoad(message, user){
-        useEffect((message, user)=>{
-          if(message == "User found"){
-            setUserData(user)
-          }
-        }, [])
-      }
-      
       const token = localStorage.getItem('token');
 
       useEffect(() => {
